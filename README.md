@@ -25,8 +25,10 @@ pip install -r requirements.txt
 ```bash
 python "FTP-Sync-IUT2/synchronisation_ftp.py"
 ```
-3. Lors de la première exécution, le script installera les dépendances nécessaires et aura besoins de redémarrer puis vous demandera les identifiants de connexion au serveur FTP.
 
+4. Suivre les instructions pour la configuration
+
+Pendant la première exécution, le script demandera les identifiants de connexion au serveur FTP. Ils seront stockés dans un fichier encrypté.
 ## Configuration
 ### Variables à configurer
 
