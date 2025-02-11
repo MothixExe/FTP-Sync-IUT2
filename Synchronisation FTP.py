@@ -31,14 +31,15 @@ def get_credentials() -> tuple:
     Returns:
     - credentials (tuple): username, password
     """
-    if not os.path.exists('credentials.txt'):
+    path = os.path.join(os.path.dirname(__file__), 'credentials.txt')
+    if not os.path.exists(path):
         username = input('Identifiant UGA: ')
         password = input('Mdp UGA: ')
-        with open('credentials.txt', 'w', encoding='utf-8') as file:
+        with open(path, 'w', encoding='utf-8') as file:
             encoded_username = base64.b64encode(username.encode('utf-8')).decode('utf-8')
             encoded_password = base64.b64encode(password.encode('utf-8')).decode('utf-8')
             file.write(f'{encoded_username}:{encoded_password}')
-    with open('credentials.txt', 'r', encoding='utf-8') as file:
+    with open(path, 'r', encoding='utf-8') as file:
         liste = file.read().strip().split(':')
         username = liste[0]
         password = liste[1]
