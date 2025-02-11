@@ -11,9 +11,19 @@ Ce script est destiné au étudiants flemmards de l'IUT2 de Grenoble pour leur c
 ```bash
 git clone https://github.com/MothixExe/FTP-Sync-IUT2.git
 ```
-2. Lancer le script
+
+2. Installer les dépendances
 ```bash
-python "FTP-Sync-IUT2/Synchronisation FTP.py"
+pip install watchdog
+
+OU
+
+pip install -r requirements.txt
+```
+
+3. Lancer le script
+```bash
+python "FTP-Sync-IUT2/synchronisation_ftp.py"
 ```
 3. Lors de la première exécution, le script installera les dépendances nécessaires et aura besoins de redémarrer puis vous demandera les identifiants de connexion au serveur FTP.
 
@@ -23,10 +33,14 @@ python "FTP-Sync-IUT2/Synchronisation FTP.py"
 - `SERVER`: Adresse du serveur FTP.
 - `REMOTE_FOLDER`: Chemin du dossier sur le serveur FTP où les fichiers seront synchronisés.
 - `FICHIER_IMPORTER`: Extensions des fichiers à synchroniser.
+- `SYNC_ALL`: Si **True**, synchronise tous les fichiers du dossier local. Si **False**, synchronise seulement les fichiers ayant été modifiés.
 
 Assurez-vous de modifier ces variables dans le script selon vos besoins avant de l'exécuter.
 
 Les identifiants de connexion au serveur FTP sont demandés lors de l'exécution du script pour la première fois. Ensuite ils sont stockés dans un fichier credentials.txt encrypté.
+
+## Problèmes connus
+- La synchronisation ce fait 2 fois de suite à chaque modification d'un fichier.
 
 ## Auteur
 
