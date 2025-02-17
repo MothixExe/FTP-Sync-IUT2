@@ -146,6 +146,11 @@ class SyncEventHandler(FileSystemEventHandler):
                 and not event.src_path.endswith('credentials.txt')):
             sync_folder(self.connexion_ftp,
                         self.local_folder, self.remote_folder)
+
+            chemin_fichier = os.path.relpath(event.src_path, self.local_folder)
+            chemin_fichier = os.path.join(
+                self.remote_folder, chemin_fichier).replace('\\', '/')
+            upload_file(self.connexion_ftp, event.src_path, chemin_fichier)
             print(f'Synchronisation de {event.src_path} ✓')
 
             # On modifie la variable globale pour afficher le chemin du fichier renommé
